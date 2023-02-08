@@ -46,7 +46,14 @@ int[,] CreateSpiral2DArray(int m, int n)
 	bool correct = true;
 	while (correct)
 	{
-		
+        
+        if (array2d[i + 1, j] != 0 &&
+            array2d[i, j + 1] != 0 &&
+            array2d[i - 1, j] != 0 &&
+            array2d[i, j - 1] != 0)
+        {
+            correct = !correct;
+        }
 	}
 	return array2d;
 }
