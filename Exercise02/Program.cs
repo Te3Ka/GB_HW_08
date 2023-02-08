@@ -4,16 +4,15 @@
 /***********************/
 
 /*
-Задайте двумерный массив.
-Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+Задайте прямоугольный двумерный массив.
+Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 Например, задан массив:
 1 4 7 2
 5 9 2 3
 8 4 2 4
-В итоге получается вот такой массив:
-7 4 2 1
-9 5 3 2
-8 4 4 2
+5 2 6 7
+Программа считает сумму элементов в каждой строке
+и выдаёт номер строки с наименьшей суммой элементов: 1 строка
 */
 
 //Метод с указанием автора
@@ -77,34 +76,32 @@ int GetMinMax(string minOrMax)
     return result;
 }
 
-// Сортировка массива по убыванию
-int[,] SortArray2d(int[,] oldArray2d)
+//Подсчёт суммы в каждой строке и возврат минимальной суммы.
+int MinimumSummaryLength(int[,] array2d)
 {
-	int[,] sortArray2d = new int[oldArray2d.GetLength(0), oldArray2d.GetLength(1)];
-	sortArray2d = oldArray2d;
-	int temp = 0;
-	int max = 0;
-	for (int i = 0; i < sortArray2d.GetLength(0); i++)
+	int[] summaryArray = new int[array2d.GetLength(0)];
+	for (int i = 0; i < array2d.GetLength(0); i++)
 	{
-		for (int j = 0; j < sortArray2d.GetLength(1) - 1; j++)
+		for (int j = 0; j < array2d.GetLength(1); j++)
 		{
-			for (int k = j + 1; k < sortArray2d.GetLength(1); k++)
-			{
-				max = sortArray2d[i, j];
-				if (max < sortArray2d[i, k])
-				{
-					temp = sortArray2d[i, k];
-					sortArray2d[i, k] = sortArray2d[i, j];
-					sortArray2d[i, j] = temp;
-				}
-			}
+			summaryArray[i] += array2d[i, j];
 		}
 	}
-	return sortArray2d;
+	int minSum = summaryArray[0];
+	int minLengthNumber = 0;
+	for (int i = 0; i < summaryArray.GetLength(0); i++)
+	{
+		if (minSum > summaryArray[i])
+		{
+			minSum = summaryArray[i];
+			minLengthNumber = i;
+		}
+	}	
+	return minLengthNumber + 1;
 }
 
 Console.WriteLine("Программа создаёт случайный двумерный массив.");
-Console.WriteLine("После программа сортирует каждую строку массива по убыванию и создаёт новый массив");
+Console.WriteLine("После программа показывает строку с наименьшей суммой элементов.");
 
 int m = GetRowsOrColumnsLengthArray2d("строк");
 int n = GetRowsOrColumnsLengthArray2d("столбцов");
@@ -115,9 +112,7 @@ int[,] array2d = CreateRandom2DArray(m, n, min, max);
 Console.WriteLine("");
 Console.WriteLine("Сгенерированный массив:");
 PrintArray2d(array2d);
-int[,] sortArray2d = SortArray2d(array2d);
-Console.WriteLine("");
-Console.WriteLine("Отсортированный массив:");
-PrintArray2d(sortArray2d);
 
+int number = MinimumSummaryLength(array2d);
+Console.WriteLine("Строка с минимальной суммой элементов = " + number);
 Author();
