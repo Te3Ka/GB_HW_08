@@ -77,6 +77,12 @@ int GetMinMax(string minOrMax)
     return result;
 }
 
+int[,] SortArray2d(int[,] oldArray2d)
+{
+	int[,] sortArray2d = new int[oldArray2d.GetLength(0), oldArray2d.GetLength(1)];
+
+	return sortArray2d;
+}
 
 Console.WriteLine("Программа создаёт случайный двумерный массив.");
 Console.WriteLine("После программа сортирует каждую строку массива по убыванию и создаёт новый массив");
@@ -87,8 +93,10 @@ int min = GetMinMax("минимума");
 int max = GetMinMax("максимума");
 
 int[,] array2d = CreateRandom2DArray(m, n, min, max);
+Console.WriteLine("");
 Console.WriteLine("Сгенерированный массив:");
 PrintArray2d(array2d);
-
 int[,] sortArray2d = SortArray2d(array2d);
-PrintArray2d(array2d);
+Console.WriteLine("");
+Console.WriteLine("Отсортированный массив:");
+PrintArray2d(sortArray2d);
