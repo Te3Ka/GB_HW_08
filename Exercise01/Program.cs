@@ -118,3 +118,5 @@ int[,] sortArray2d = SortArray2d(array2d);
 Console.WriteLine("");
 Console.WriteLine("Отсортированный массив:");
 PrintArray2d(sortArray2d);
+
+Author();
