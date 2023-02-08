@@ -80,7 +80,16 @@ int GetMinMax(string minOrMax)
 int[,] PowTwoMatrix(int[,] arrayOne, int[,] arrayTwo)
 {
 	int[,] resultMatrix = new int[arrayOne.GetLength(0), arrayTwo.GetLength(1)];
-
+	for (int i = 0; i < resultMatrix.GetLength(0); i++)
+	{
+		for (int j = 0; j < resultMatrix.GetLength(0); j++)
+		{
+			for (int k = 0; k < arrayOne.GetLength(1); k++)
+			{
+				resultMatrix[i, j] += arrayOne[i, k] * arrayTwo[k, j];
+			}
+		}
+	}
 	return resultMatrix;
 }
 
@@ -109,16 +118,17 @@ Console.WriteLine("");
 Console.WriteLine("Сгенерированная вторая матрица:");
 PrintArray2d(array2dTwo);
 
-if (array2dOne.GetLength(0) != array2dTwo.GetLength(1))
+if (array2dOne.GetLength(1) != array2dTwo.GetLength(0))
 {
 	Console.WriteLine("Выполнение умножения двух матриц невозможно,\n"
-					+ "так как количество строк первой матрицы\n"
-					+ "не равно количеству столбцов второй матрицы.");
+					+ "так как количество столбцов первой матрицы\n"
+					+ "не равно количеству строк второй матрицы.");
 	Author();
 	return;
 }
 
 int[,] powMatrix = PowTwoMatrix(array2dOne, array2dTwo);
+Console.WriteLine("");
 Console.WriteLine("Произведение двух матриц:");
 PrintArray2d(powMatrix);
 
