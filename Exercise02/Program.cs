@@ -109,7 +109,7 @@ int min = GetMinMax("минимума");
 int max = GetMinMax("максимума");
 
 int[,] array2d = CreateRandom2DArray(m, n, min, max);
-Console.WriteLine("");
+Console.WriteLine();
 Console.WriteLine("Сгенерированный массив:");
 PrintArray2d(array2d);
 

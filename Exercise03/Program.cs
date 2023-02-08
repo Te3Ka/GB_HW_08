@@ -103,7 +103,7 @@ int min = GetMinMax("минимума");
 int max = GetMinMax("максимума");
 int[,] array2dOne = CreateRandom2DArray(m, n, min, max);
 
-Console.WriteLine("");
+Console.WriteLine();
 Console.WriteLine("Задайте параметры второй матрицы:");
 m = GetRowsOrColumnsLengthArray2d("строк");
 n = GetRowsOrColumnsLengthArray2d("столбцов");
@@ -111,10 +111,10 @@ min = GetMinMax("минимума");
 max = GetMinMax("максимума");
 int[,] array2dTwo = CreateRandom2DArray(m, n, min, max);
 
-Console.WriteLine("");
+Console.WriteLine();
 Console.WriteLine("Сгенерированная первая матрица:");
 PrintArray2d(array2dOne);
-Console.WriteLine("");
+Console.WriteLine();
 Console.WriteLine("Сгенерированная вторая матрица:");
 PrintArray2d(array2dTwo);
 
@@ -128,7 +128,7 @@ if (array2dOne.GetLength(1) != array2dTwo.GetLength(0))
 }
 
 int[,] powMatrix = PowTwoMatrix(array2dOne, array2dTwo);
-Console.WriteLine("");
+Console.WriteLine();
 Console.WriteLine("Произведение двух матриц:");
 PrintArray2d(powMatrix);
 
