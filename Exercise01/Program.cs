@@ -80,7 +80,25 @@ int GetMinMax(string minOrMax)
 int[,] SortArray2d(int[,] oldArray2d)
 {
 	int[,] sortArray2d = new int[oldArray2d.GetLength(0), oldArray2d.GetLength(1)];
-
+	sortArray2d = oldArray2d;
+	int temp = 0;
+	int max = 0;
+	for (int i = 0; i < sortArray2d.GetLength(0); i++)
+	{
+		for (int j = 0; j < sortArray2d.GetLength(1) - 1; j++)
+		{
+			for (int k = j + 1; k < sortArray2d.GetLength(1); k++)
+			{
+				max = sortArray2d[i, j];
+				if (max < sortArray2d[i, k])
+				{
+					temp = sortArray2d[i, k];
+					sortArray2d[i, k] = sortArray2d[i, j];
+					sortArray2d[i, j] = temp;
+				}
+			}
+		}
+	}
 	return sortArray2d;
 }
 
