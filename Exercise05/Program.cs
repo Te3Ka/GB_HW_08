@@ -48,101 +48,87 @@ int[,] CreateSpiral2DArray(int m, int n)
     {
         switch (direction)
         {
+            case (0):
+            {
+                if (array2d[i, j + 1] != 0 &&
+                    array2d[i + 1, j] != 0)
+                {
+                    array2d[i, j] = count;
+                    correct = !correct;
+                }
+                else
+                {
+                    array2d[i, j] = count;
+                    count++;
+                    j++;
+                    direction = 1;
+                }
+                break;
+            }
             case (1):
+            {
+                if (j < array2d.GetLength(1) - 1 &&
+                    array2d[i, j + 1] == 0)
                 {
-                    if (array2d[i, j] == 0 &&
-                        i < array2d.GetLength(0) - 1 &&
-                        array2d[i + 1, j] == 0)
-                    {
-                        array2d[i, j] = count;
-                        count++;
-                        i++;
-                    }
-                    else
-                    {
-                        direction = 2;
-                    }
-                    break;
+                    array2d[i, j] = count;
+                    count++;
+                    j++;
                 }
+                else
+                {
+                    array2d[i, j] = count;
+                    direction = 2;
+                }
+                break;
+            }
             case (2):
+            {
+                if (i < array2d.GetLength(0) - 1 &&
+                    array2d[i + 1, j] == 0)
                 {
-                    if (array2d[i, j] == 0 &&
-                        j < array2d.GetLength(1) - 1 &&
-                        array2d[i, j + 1] == 0)
-                    {
-                        array2d[i, j] = count;
-                        count++;
-                        j++;
-                    }
-                    else
-                    {
-                        direction = 3;
-                    }
-                    break;
+                    array2d[i, j] = count;
+                    count++;
+                    i++;
                 }
+                else
+                {
+                    array2d[i, j] = count;
+                    direction = 3;
+                }
+                break;
+            }
             case (3):
+            {
+                if (j > 0 &&
+                    array2d[i, j - 1] == 0)
                 {
-                    if (array2d[i, j] == 0 &&
-                        i > 0 &&
-                        array2d[i - 1, j] == 0)
-                    {
-                        array2d[i, j] = count;
-                        count++;
-                        i--;
-                    }
-                    else
-                    {
-                        direction = 4;
-                    }
-                    break;
+                    array2d[i, j] = count;
+                    count++;
+                    j--;
                 }
+                else
+                {
+                    array2d[i, j] = count;
+                    direction = 4;
+                }
+                break;
+            }
             case (4):
+            {
+                if (i > 0 &&
+                    array2d[i - 1, j] == 0)
                 {
-                    if (array2d[i, j] == 0 &&
-                        j > 0 &&
-                        array2d[i, j - 1] == 0)
-                    {
-                        array2d[i, j] = count;
-                        count++;
-                        j--;
-                    }
-                    else
-                    {
-                        direction = 5;
-                    }
-                    break;
+                    array2d[i, j] = count;
+                    count++;
+                    i--;
                 }
-            case (5):
+                else
                 {
-                    if (array2d[i + 1, j] != 0 &&
-                        array2d[i, j + 1] != 0 &&
-                        array2d[i - 1, j] != 0 &&
-                        array2d[i, j - 1] != 0)
-                    {
-                        correct = !correct;
-                    }
-                    else if (array2d[i - 1, j] == 0)
-                    {
-                        direction = 1;
-                        i--;
-                    }
-                    else if (array2d[i, j - 1] == 0)
-                    {
-                        direction = 1;
-                        j--;
-                    }
-                    else if (array2d[i + 1, j] == 0)
-                    {
-                        direction = 1;
-                        i++;
-                    }
-                    else if (array2d[i, j + 1] == 0)
-                    {
-                        direction = 1;
-                        j++;
-                    }
-                    break;
+                    array2d[i, j] = count;
+                    direction = 0;
                 }
+                break;
+            }
         }
     }
     return array2d;
