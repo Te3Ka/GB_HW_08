@@ -250,7 +250,7 @@ int GetDirectionSpiral()
     Console.WriteLine("Заполнение спирали будет по часовой стрелке или против? Введите 1 или 2:");
     Console.WriteLine("1 - по часовой стрелке.");
     Console.WriteLine("2 - против часовой стрелки.");
-    Console.Write(">>: ")
+    Console.Write(">>: ");
     int.TryParse(Console.ReadLine(), out int directionSpiral);
     while (directionSpiral != 1 && directionSpiral != 2)
     {
