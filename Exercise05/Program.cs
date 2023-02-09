@@ -39,28 +39,118 @@ void PrintArray2d(int[,] arrayPrint)
 
 int[,] CreateSpiral2DArray(int m, int n)
 {
-	int[,] array2d = new int[m, n];
-	int i = 0, j = 0;
-	int count = 1;
-	int direction = 1;
-	bool correct = true;
-	while (correct)
-	{
-        
-        if (array2d[i + 1, j] != 0 &&
-            array2d[i, j + 1] != 0 &&
-            array2d[i - 1, j] != 0 &&
-            array2d[i, j - 1] != 0)
+    int[,] array2d = new int[m, n];
+    int i = 0, j = 0;
+    int count = 1;
+    int direction = 1;
+    bool correct = true;
+    while (correct)
+    {
+        switch (direction)
         {
-            correct = !correct;
+            case (1):
+                {
+                    if (array2d[i, j] == 0 &&
+                        i < array2d.GetLength(0) - 1 &&
+                        array2d[i + 1, j] == 0)
+                    {
+                        array2d[i, j] = count;
+                        count++;
+                        i++;
+                    }
+                    else
+                    {
+                        direction = 2;
+                    }
+                    break;
+                }
+            case (2):
+                {
+                    if (array2d[i, j] == 0 &&
+                        j < array2d.GetLength(1) - 1 &&
+                        array2d[i, j + 1] == 0)
+                    {
+                        array2d[i, j] = count;
+                        count++;
+                        j++;
+                    }
+                    else
+                    {
+                        direction = 3;
+                    }
+                    break;
+                }
+            case (3):
+                {
+                    if (array2d[i, j] == 0 &&
+                        i > 0 &&
+                        array2d[i - 1, j] == 0)
+                    {
+                        array2d[i, j] = count;
+                        count++;
+                        i--;
+                    }
+                    else
+                    {
+                        direction = 4;
+                    }
+                    break;
+                }
+            case (4):
+                {
+                    if (array2d[i, j] == 0 &&
+                        j > 0 &&
+                        array2d[i, j - 1] == 0)
+                    {
+                        array2d[i, j] = count;
+                        count++;
+                        j--;
+                    }
+                    else
+                    {
+                        direction = 5;
+                    }
+                    break;
+                }
+            case (5):
+                {
+                    if (array2d[i + 1, j] != 0 &&
+                        array2d[i, j + 1] != 0 &&
+                        array2d[i - 1, j] != 0 &&
+                        array2d[i, j - 1] != 0)
+                    {
+                        correct = !correct;
+                    }
+                    else if (array2d[i - 1, j] == 0)
+                    {
+                        direction = 1;
+                        i--;
+                    }
+                    else if (array2d[i, j - 1] == 0)
+                    {
+                        direction = 1;
+                        j--;
+                    }
+                    else if (array2d[i + 1, j] == 0)
+                    {
+                        direction = 1;
+                        i++;
+                    }
+                    else if (array2d[i, j + 1] == 0)
+                    {
+                        direction = 1;
+                        j++;
+                    }
+                    break;
+                }
         }
-	}
-	return array2d;
+    }
+    return array2d;
 }
 
 //Запрос на количество строк или столбцов в массиве
 int GetRowsOrColumnsLengthArray2d(string columnsOrRows)
-{  
+{
     Console.Write($"Сколько {columnsOrRows} будет в массиве? ");
     int.TryParse(Console.ReadLine(), out int num);
     while (num <= 0)
