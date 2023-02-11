@@ -75,18 +75,17 @@ int GetMinMax(string minOrMax)
     return result;
 }
 
-
 //Произведение двух матриц
 int[,] PowTwoMatrix(int[,] arrayOne, int[,] arrayTwo)
 {
 	int[,] resultMatrix = new int[arrayOne.GetLength(0), arrayTwo.GetLength(1)];
 	for (int i = 0; i < resultMatrix.GetLength(0); i++)
 	{
-		for (int j = 0; j < resultMatrix.GetLength(0); j++)
+		for (int j = 0; j < resultMatrix.GetLength(1); j++)
 		{
 			for (int k = 0; k < arrayOne.GetLength(1); k++)
 			{
-				resultMatrix[i, j] += arrayOne[i, k] * arrayTwo[k, j];
+				resultMatrix[i, j] += (arrayOne[i, k] * arrayTwo[k, j]);
 			}
 		}
 	}
