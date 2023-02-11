@@ -164,7 +164,7 @@ int[,] CreateSpiral2DArrayCounterClockWise(int[,] array2d)
             }
             case (1):
             {
-                if (i < array2d.GetLength(1) - 1 &&
+                if (i < array2d.GetLength(0) - 1 &&
                     array2d[i + 1, j] == 0)
                 {
                     array2d[i, j] = count;
@@ -180,7 +180,7 @@ int[,] CreateSpiral2DArrayCounterClockWise(int[,] array2d)
             }
             case (2):
             {
-                if (j < array2d.GetLength(0) - 1 &&
+                if (j < array2d.GetLength(1) - 1 &&
                     array2d[i, j + 1] == 0)
                 {
                     array2d[i, j] = count;
